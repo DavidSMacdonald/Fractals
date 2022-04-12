@@ -23,8 +23,8 @@ public class SerpinskisTriangle extends JPanel
         int yCenter = getHeight() / 2;
 
 
-        int [] xcoord = {xCenter, xCenter-128, xCenter + 128};
-        int [] ycoord = {yCenter-(int)(64*Math.sqrt(3)), yCenter+(int)(64*Math.sqrt(3)), yCenter+(int)(64*Math.sqrt(3))};
+        int [] xcoord = {xCenter, xCenter-256, xCenter + 256};
+        int [] ycoord = {yCenter-(int)(128*Math.sqrt(3)), yCenter+(int)(128*Math.sqrt(3)), yCenter+(int)(128*Math.sqrt(3))};
 
         g.setColor(Color.RED);
         drawAndSplit(g, xcoord, ycoord, levels);
@@ -48,9 +48,12 @@ public class SerpinskisTriangle extends JPanel
             g.fillPolygon(x,y,3);
             return;
         }
-        drawAndSplit(g,new int[] {x[0],midpoints(x)[1],midpoints(x)[2]},new int[] {y[0],midpoints(y)[1],midpoints(y)[2]},times-1);
-        drawAndSplit(g,new int[] {midpoints(x)[0],x[1],midpoints(x)[2]},new int[] {midpoints(y)[0],y[1],midpoints(y)[2]},times-1);
-        drawAndSplit(g,new int[] {midpoints(x)[0],midpoints(x)[1],x[2]},new int[] {midpoints(y)[0],midpoints(y)[1],y[2]},times-1);
+        drawAndSplit(g,new int[] {x[0],midpoints(x)[0],midpoints(x)[2]},new int[] {y[0],midpoints(y)[0],midpoints(y)[2]},times-1);
+        drawAndSplit(g,new int[] {midpoints(x)[0],x[1],midpoints(x)[1]},new int[] {midpoints(y)[0],y[1],midpoints(y)[1]},times-1);
+        drawAndSplit(g,new int[] {midpoints(x)[2],midpoints(x)[1],x[2]},new int[] {midpoints(y)[2],midpoints(y)[1],y[2]},times-1);
+//        drawAndSplit(g,new int[] {x[0],midpoints(x)[1],x[1]},new int[] {y[0],midpoints(y)[1],y[1]},times-1);
+//        drawAndSplit(g,new int[] {x[1],midpoints(x)[2],x[0]},new int[] {y[1],midpoints(y)[2],y[0]},times-1);
+//        drawAndSplit(g,new int[] {x[2],midpoints(x)[0],x[1]},new int[] {y[0],midpoints(y)[0],y[1]},times-1);
 
     }
     public static void main(String[] args)
